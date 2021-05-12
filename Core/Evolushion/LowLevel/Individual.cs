@@ -10,8 +10,13 @@ namespace evolution.Core.Evolushion
     {
         // (содержит набор хромосом (генотип))
         Chromosome[] genotype;
-        MutationType mutation = new MutationType();
+        MutationType mutation;
 
+        public Individual(MutationType _mutation)
+        {
+            mutation = _mutation;
+            InitGenotype();
+        }
         void InitGenotype()
         {
 

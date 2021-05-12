@@ -9,7 +9,7 @@ namespace evolution.Core.Evolushion
     class Chromosome
     {
         // (содержит последовательность генов (локус))
-        List<Gene> lokus;
+        List<GeneValue> lokus;
 
 
         private void GenerateLokus()
