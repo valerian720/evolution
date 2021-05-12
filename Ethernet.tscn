@@ -7,9 +7,12 @@
 
 [node name="Background" type="Sprite" parent="."]
 modulate = Color( 0.215686, 0.227451, 0.254902, 1 )
-position = Vector2( 518.841, 299.548 )
+position = Vector2( 518.841, 300.608 )
 scale = Vector2( 33.363, 19.9114 )
 texture = ExtResource( 2 )
+
+[node name="Computer2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 406, 193 )
 
 [node name="Computer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 167.651, 96.051 )

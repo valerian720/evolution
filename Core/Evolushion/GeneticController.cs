@@ -8,5 +8,16 @@ namespace evolution.Core.Evolushion
 {
     class GeneticController
     {
+        // (содержит и управляет списком особей (популяция), )
+        Individual[] population;
+
+        public void InitPopulation()
+        {
+
+        }
+        public void ProgressPopulation()
+        {
+
+        }
     }
 }

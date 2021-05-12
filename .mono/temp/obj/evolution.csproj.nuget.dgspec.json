@@ -11,7 +11,7 @@
         "projectName": "evolution",
         "projectPath": "D:\\godnot\\evolution\\evolution.csproj",
         "packagesPath": "C:\\Users\\UserX\\.nuget\\packages\\",
-        "outputPath": "D:\\GODNOT\\EVOLUTION\\.mono\\temp\\obj\\",
+        "outputPath": "D:\\godnot\\evolution\\.mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

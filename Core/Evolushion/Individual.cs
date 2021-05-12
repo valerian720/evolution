@@ -8,5 +8,18 @@ namespace evolution.Core.Evolushion
 {
     class Individual
     {
+        // (содержит набор хромосом (генотип))
+        Chromosome[] genotype;
+        MutationType mutation = new MutationType();
+
+        void InitGenotype()
+        {
+
+        }
+
+        public void GetFit2TaskIndividual()
+        {
+
+        }
     }
 }

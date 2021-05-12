@@ -1,0 +1,8 @@
+D:\godnot\evolution\.mono\temp\bin\ExportDebug\evolution.dll
+D:\godnot\evolution\.mono\temp\bin\ExportDebug\evolution.pdb
+D:\godnot\evolution\.mono\temp\obj\ExportDebug\evolution.csprojAssemblyReference.cache
+D:\godnot\evolution\.mono\temp\obj\ExportDebug\evolution.AssemblyInfoInputs.cache
+D:\godnot\evolution\.mono\temp\obj\ExportDebug\evolution.AssemblyInfo.cs
+D:\godnot\evolution\.mono\temp\obj\ExportDebug\evolution.csproj.CoreCompileInputs.cache
+D:\godnot\evolution\.mono\temp\obj\ExportDebug\evolution.dll
+D:\godnot\evolution\.mono\temp\obj\ExportDebug\evolution.pdb
