@@ -10,7 +10,7 @@ namespace evolution.Core.Evolushion
     {
         // (содержит обработку мутаций хромосомы (локус))
 
-        GeneValue Mutate(GeneValue toMutate)  
+        GeneValue Mutate(GeneValue toMutate);  
         
     }
 }

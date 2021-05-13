@@ -19,5 +19,10 @@ namespace evolution.Core.Evolushion
         {
 
         }
+
+        Individual Crossbreed(Individual alfa, Individual beta)
+        {
+            return alfa.Crossbreed(beta); // ?
+        }
     }
 }

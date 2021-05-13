@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace evolution.Core.Evolushion
 {
-    interface GeneValue
+    interface GenotypeMixer
     {
-        void GetFit2TaskGene();
-        GeneValue Copy();
+        Chromosome[] Mix(Chromosome[] genotypeAlfa, Chromosome[] genotypeBeta);
     }
 }
