@@ -1,4 +1,5 @@
-﻿using evolution.Core.Util;
+﻿using evolution.Core.Evolushion.LowLevel;
+using evolution.Core.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace evolution.Core.Evolushion
 {
-    class Chromosome
+    public class Chromosome
     {
 
         // (содержит последовательность генов (локус))
@@ -15,18 +16,24 @@ namespace evolution.Core.Evolushion
 
         public int Length { get => lokus.Count; }
 
-        public Chromosome()
+        public Chromosome(GeneValue[] allPossibleGenes, int cromosomeLength)
         {
-            GenerateLokus();
+            RandomGenerateLokus(allPossibleGenes, cromosomeLength);
         }
         public Chromosome(List<GeneValue> _lokus)
         {
             lokus = _lokus;
         }
 
-        private void GenerateLokus()
+        private void RandomGenerateLokus(GeneValue[] allPossibleGenes, int cromosomeLength)
         {
-            //TODO
+            // full random 
+            // в теории при должном количестве значений генов распределение будет по Гаусу
+            lokus = new List<GeneValue>();
+            for (int i = 0; i < cromosomeLength; i++)
+            {
+                lokus.Add(allPossibleGenes[StaticRandom.getInstance().Next(allPossibleGenes.Length-1)]);
+            }
         }
 
         public Chromosome ReplaceGeneValue(int startPoint, List<GeneValue> values)
@@ -55,17 +62,19 @@ namespace evolution.Core.Evolushion
             return new Chromosome(tmpLokus);
         }
 
-        public int GetFit2TaskLokus()
+        public double GetFit2TaskLokus(CromosomeAnalyzer analyzer)
         {
-            int ret = 0;
-            // TODO
-            return ret;
+            return analyzer.Analyze(this.lokus);
         }
 
-        private void Mutate(MutationType mutation)
+        public void Mutate(MutationType mutation, int mutationRateOutOf100)
         {
-            int rndVal = StaticRandom.getInstance().Next(this.Length - 1);
-            lokus[rndVal] = mutation.Mutate(lokus[rndVal]);
+            if (StaticRandom.getInstance().Next(100 - mutationRateOutOf100) == 0 && mutationRateOutOf100>0) // 100% случаев при 100 и 0% при 0
+            {
+                int rndVal = StaticRandom.getInstance().Next(this.Length - 1);
+                lokus[rndVal] = mutation.Mutate(lokus[rndVal]);
+            }
+            
         }
 
     }

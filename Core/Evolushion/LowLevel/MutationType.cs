@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace evolution.Core.Evolushion
 {
-    interface MutationType
+    public interface MutationType
     {
         // (содержит обработку мутаций хромосомы (локус))
 

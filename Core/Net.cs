@@ -9,6 +9,18 @@ namespace evolution.Core.Evolushion
     class Net
     {
         // (содержит гиперпараметры)
-        NetContainer container = new NetContainer();
+        int netSize;
+
+        NetContainer container;
+
+        public Net(int size)
+        {
+            netSize = size;
+            container = new NetContainer(size);
+        }
+
+         
+
+        public NetContainer GetContainerLink() => container;
     }
 }

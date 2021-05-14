@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace evolution.Core.Evolushion
+namespace evolution.Core.Evolushion.LowLevel.SelectionHandlers
 {
-    public interface GeneValue
+    class RankingSelectionHandler
     {
-        GeneValue Copy();
     }
 }

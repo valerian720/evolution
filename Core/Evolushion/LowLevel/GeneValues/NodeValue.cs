@@ -15,9 +15,11 @@ namespace evolution.Core.Evolushion
             nodeId = _nodeId;
         }
 
-        public void GetFit2TaskGene()
+        public int GetValue()
         {
-            
+            return nodeId;
         }
+
+        public GeneValue Copy() => new NodeValue(this.nodeId);
     }
 }
