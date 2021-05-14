@@ -7,7 +7,7 @@ namespace evolution.Core.Evolushion {
     {
         // (содержит гиперпараметры)
         int populationAmount = 100;
-        int cromosomeAmount = 1;
+        int cromosomeAmount = 2;
         int cromosomeLength = 30;
 
         int mutationAmount = 10;
@@ -15,7 +15,7 @@ namespace evolution.Core.Evolushion {
 
         int selectionCount = 50;
 
-        int iterationCount = 100;
+        int iterationCount = 250;
 
         GeneticController controller;
 
@@ -59,7 +59,7 @@ namespace evolution.Core.Evolushion {
 
         public string GetMostFittedData()
         {
-            return String.Join("\n", controller.GetMostFittedGenomeFingerprint());
+            return controller.GetMostFittedGenomeFingerprint();
         }
 
     }

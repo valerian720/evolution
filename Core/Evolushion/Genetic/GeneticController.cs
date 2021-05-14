@@ -140,10 +140,10 @@ namespace evolution.Core.Evolushion
             }
         }
 
-        public string[] GetMostFittedGenomeFingerprint()
+        public string GetMostFittedGenomeFingerprint()
         {
             population.Sort(comparer);
-            return population.First().GetGenomeFingerprint();
+            return $"Score={population.First().score}\n\n{String.Join("\n\n", population.First().GetGenomeFingerprint())}";
         }
 
         Individual Crossbreed(Individual alfa, Individual beta)

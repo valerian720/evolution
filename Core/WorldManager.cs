@@ -14,7 +14,7 @@ public class WorldManager : Node
         (double score, string scores) = genetic.GetFitness();
         GD.Print(score);
         GD.Print("======");
-        GD.Print(scores);
+        //GD.Print(scores);
     }
 
     // Called when the node enters the scene tree for the first time.
