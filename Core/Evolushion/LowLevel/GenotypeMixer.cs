@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace evolution.Core.Evolushion
 {
-    interface GenotypeMixer
+    public interface GenotypeMixer
     {
         Chromosome[] Mix(Chromosome[] genotypeAlfa, Chromosome[] genotypeBeta);
     }

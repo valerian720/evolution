@@ -77,5 +77,15 @@ namespace evolution.Core.Evolushion
             
         }
 
+        internal string GetFingerprint()
+        {
+            string ret = "|";
+            foreach (var item in lokus)
+            {
+                ret += $"{item}|";
+            }
+
+            return ret;
+        }
     }
 }

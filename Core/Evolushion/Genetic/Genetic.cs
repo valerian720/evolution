@@ -7,41 +7,60 @@ namespace evolution.Core.Evolushion {
     {
         // (содержит гиперпараметры)
         int populationAmount = 100;
-        int cromosomeAmount = 2;
-        int cromosomeLength = 10;
+        int cromosomeAmount = 1;
+        int cromosomeLength = 30;
 
         int mutationAmount = 10;
         int mutationRateOutOf100 = 50;
 
         int selectionCount = 50;
 
-        GeneticController controller;
-        CromosomeAnalyzer analyzer;
+        int iterationCount = 100;
 
-        public Genetic(GeneValue[] possibleGeneValues, CromosomeAnalyzer _analyzer)
+        GeneticController controller;
+
+        public Genetic(SelectionHandler selection, GeneValue[] possibleGeneValues, CromosomeAnalyzer _analyzer)
         {
-            Repopulate(possibleGeneValues);
-            this.analyzer = _analyzer;
+            Repopulate(selection, possibleGeneValues, _analyzer);
         }
 
-        public void Repopulate(GeneValue[] possibleGeneValues)
+        public void Repopulate(SelectionHandler selection, GeneValue[] possibleGeneValues, CromosomeAnalyzer _analyzer)
         {
-            controller = new GeneticController(possibleGeneValues, populationAmount, cromosomeAmount, cromosomeLength, mutationAmount, mutationRateOutOf100, selectionCount);
+            controller = new GeneticController(selection, possibleGeneValues, _analyzer, populationAmount, cromosomeAmount, cromosomeLength, mutationAmount, mutationRateOutOf100, selectionCount, iterationCount);
         }
 
         internal (double, string) GetFitness()
         {
-            return controller.GetFitness(analyzer); // tmp for debug
+            return controller.GetFitness(); // tmp for debug
+        }
+
+        internal void SelectionTest()
+        {
+            controller.SelectionProcess(); // tmp for debug
         }
 
         internal void MutationTest()
         {
-            controller.MutateAll();
+            controller.MutateAll(); // tmp for debug
         }
 
         internal void BreedingTest()
         {
-            controller.BreedingPeriod();
+            controller.BreedingPeriod(); // tmp for debug
         }
+
+        public void RunFullCycle()
+        {
+            for (int i = 0; i < iterationCount; i++)
+            {
+                controller.ProgressPopulation();
+            }
+        }
+
+        public string GetMostFittedData()
+        {
+            return String.Join("\n", controller.GetMostFittedGenomeFingerprint());
+        }
+
     }
 }

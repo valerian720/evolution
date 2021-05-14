@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace evolution.Core.Evolushion
 {
-    class Individual
+    public class Individual
     {
         // (содержит набор хромосом (генотип))
         public Chromosome[] genotype { get; private set; }
         MutationType mutation;
         GenotypeMixer genMixer;
+
+        public double score { get; private set; }
 
         public Individual(MutationType _mutation, GenotypeMixer _genMixer, GeneValue[] allPossibleGenes, int cromosomeAmount, int cromosomeLength)
         {
@@ -20,6 +22,8 @@ namespace evolution.Core.Evolushion
             this.genMixer = _genMixer;
 
             InitGenotype(allPossibleGenes, cromosomeAmount, cromosomeLength);
+
+            score = 0;
         }
 
         public Individual(Chromosome[] genotypeAlfa, Chromosome[] genotypeBeta, MutationType _mutation, GenotypeMixer _genMixer)
@@ -60,6 +64,9 @@ namespace evolution.Core.Evolushion
             {
                 ret += cromosome.GetFit2TaskLokus(analyzer);
             }
+
+            score = ret;
+
             return ret;
         }
 
@@ -67,6 +74,32 @@ namespace evolution.Core.Evolushion
         {
             // тип мутации идет от производящего родителя (что за бред)
             return new Individual(this.genotype, partner.genotype, this.mutation, this.genMixer);
+        }
+
+        //=================================================
+        // перегрузка функций сравнений
+        public static bool operator >(Individual c1, Individual c2) => c1.score > c2.score;
+        public static bool operator <(Individual c1, Individual c2) => c1.score < c2.score;
+        public static bool operator >=(Individual c1, Individual c2) => c1.score >= c2.score;
+        public static bool operator <=(Individual c1, Individual c2) => c1.score <= c2.score;
+
+        internal string[] GetGenomeFingerprint()
+        {
+            string[] ret = new string[genotype.Length];
+
+            for (int i = 0; i < genotype.Length; i++)
+            {
+                ret[i] = genotype[i].GetFingerprint();
+            }
+            return ret;
+        }
+    }
+
+    public class IndividualScoreComparer : IComparer<Individual>
+    {
+        public int Compare(Individual x, Individual y)
+        {
+            return x.score.CompareTo(y.score);
         }
     }
 }

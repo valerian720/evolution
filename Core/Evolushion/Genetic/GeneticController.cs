@@ -10,24 +10,40 @@ namespace evolution.Core.Evolushion
 {
     class GeneticController
     {
-        int populationAmount;
+        int idealPopulationAmount;
+        List<Individual> population;
+
+        CromosomeAnalyzer analyzer;
 
         int mutationAmount;
         int mutationRateOutOf100;
 
         int selectionCount;
+        SelectionHandler selection;
 
-        public GeneticController(GeneValue[] possibleGeneValues, int _populationAmount, int cromosomeAmount, int cromosomeLength, int _mutationAmount, int _mutationRateOutOf100, int _selectionCount)
+        int iterationCount;
+        int currentIteration = 0;
+
+        IndividualScoreComparer comparer = new IndividualScoreComparer();
+
+        public GeneticController(SelectionHandler _selection, GeneValue[] possibleGeneValues, CromosomeAnalyzer _analyzer, int _populationAmount, int cromosomeAmount, int cromosomeLength, int _mutationAmount, int _mutationRateOutOf100, int _selectionCount, int _iterationCount)
         {
             InitPopulation(_populationAmount, possibleGeneValues, cromosomeAmount, cromosomeLength);
-            this.populationAmount = _populationAmount;
+            this.idealPopulationAmount = _populationAmount;
+
+            this.analyzer = _analyzer;
+
             this.mutationAmount = _mutationAmount;
             this.mutationRateOutOf100 = _mutationRateOutOf100;
+
             this.selectionCount = _selectionCount;
+            this.selection = _selection;
+
+            this.iterationCount = _iterationCount;
         }
 
         // (содержит и управляет списком особей (популяция), )
-        List<Individual> population;
+        
 
         public void InitPopulation(int populationAmount, GeneValue[] possibleGeneValues, int cromosomeAmount, int cromosomeLength)
         {
@@ -43,11 +59,7 @@ namespace evolution.Core.Evolushion
         //
         internal void SelectionProcess()
         {
-            foreach (var individual in population)
-            {
-
-                //individual.Mutate(mutationAmount, mutationRateOutOf100);
-            }
+            selection.SelectPopulation(ref population, selectionCount);
         }
 
 
@@ -75,10 +87,11 @@ namespace evolution.Core.Evolushion
              * количество необходимых детей = общее количество индивидов с предыдущей итерации - размер группы, прошедших селекцию
              */
 
-            int neededChildPopulation = populationAmount - population.Count;
+            int neededChildPopulation = idealPopulationAmount - population.Count;
 
             for (int i = 0; i < neededChildPopulation; i++)
             {
+                // ORGY
                 population.Add(Crossbreed(population[StaticRandom.getInstance().Next(population.Count)], population[StaticRandom.getInstance().Next(population.Count)]));
             }
 
@@ -95,7 +108,7 @@ namespace evolution.Core.Evolushion
         }
         //
 
-        internal (double, string) GetFitness(CromosomeAnalyzer analyzer)
+        internal (double, string) GetFitness()
         {
             // get fitness of polulation to task
 
@@ -118,13 +131,25 @@ namespace evolution.Core.Evolushion
 
         public void ProgressPopulation()
         {
+            GetFitness(); // оценка приспособленности особей популяции
+            if (currentIteration <= iterationCount) // проверка условия
+            {
+                SelectionProcess(); // селекция
+                BreedingPeriod(); // применение оператора скрещивания
+                MutateAll(); // применение оператора мутации
+            }
+        }
 
+        public string[] GetMostFittedGenomeFingerprint()
+        {
+            population.Sort(comparer);
+            return population.First().GetGenomeFingerprint();
         }
 
         Individual Crossbreed(Individual alfa, Individual beta)
         {
             // SEX
-            return alfa.Crossbreed(beta); // ?
+            return alfa.Crossbreed(beta); 
         }
     }
 }

@@ -21,5 +21,10 @@ namespace evolution.Core.Evolushion
         }
 
         public GeneValue Copy() => new NodeValue(this.nodeId);
+
+        public override string ToString()
+        {
+            return $"[ID: {nodeId}]";
+        }
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace evolution.Core.Evolushion.LowLevel
 {
-    interface SelectionHandler
+    public interface SelectionHandler
     {
+        void SelectPopulation(ref List<Individual> individuals, int count);
     }
 }

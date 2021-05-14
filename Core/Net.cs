@@ -22,5 +22,16 @@ namespace evolution.Core.Evolushion
          
 
         public NetContainer GetContainerLink() => container;
+
+        internal NodeValue[] GetGeneticNodeValues()
+        {
+            // выдает перечисление всех нод, без дырок
+            NodeValue[] ret = new NodeValue[netSize];
+            for (int i = 0; i < netSize; i++)
+            {
+                ret[i] = new NodeValue(i);
+            }
+            return ret;
+        }
     }
 }

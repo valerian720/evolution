@@ -1,4 +1,5 @@
 using evolution.Core.Evolushion;
+using evolution.Core.Evolushion.LowLevel.SelectionHandlers;
 using Godot;
 using System;
 
@@ -19,20 +20,29 @@ public class WorldManager : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+
         Net net = new Net(30);
         FindShortestWay4PacketInNetCromosomeAnalyzer analyzer = new FindShortestWay4PacketInNetCromosomeAnalyzer(net.GetContainerLink());
 
+        RankingSelectionHandler rankingSelection = new RankingSelectionHandler();
 
-        Genetic genetic = new Genetic(new GeneValue[] {new NodeValue(0), new NodeValue(1), new NodeValue(2), new NodeValue(3) }, analyzer);
+        Genetic genetic = new Genetic(rankingSelection, net.GetGeneticNodeValues(), analyzer);
 
 
         // tmp for debug
+        DebugGetFitness(genetic);
+        genetic.SelectionTest();
         DebugGetFitness(genetic);
         genetic.MutationTest();
         DebugGetFitness(genetic);
         genetic.BreedingTest();
         DebugGetFitness(genetic);
 
+        //
+        genetic.RunFullCycle();
+
+        DebugGetFitness(genetic);
+        GD.Print(genetic.GetMostFittedData());
         //
         // tmp for debug
     }

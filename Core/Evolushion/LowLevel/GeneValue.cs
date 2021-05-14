@@ -9,5 +9,6 @@ namespace evolution.Core.Evolushion
     public interface GeneValue
     {
         GeneValue Copy();
+        string ToString(); // хз как это пометить, но в коде используется для вывода информации преобразование класса к строке
     }
 }
