@@ -12,11 +12,13 @@ namespace evolution.Core.Evolushion
         int netSize;
 
         NetContainer container;
+        NetManager netDisplayManager;
 
-        public Net(int size)
+        public Net(int size, int awailableAreaX, int awailableAreaY, NetManager netDisplayManager)
         {
-            netSize = size;
-            container = new NetContainer(size);
+            this.netSize = size;
+            this.netDisplayManager = netDisplayManager;
+            container = new NetContainer(size, awailableAreaX, awailableAreaY);
         }
 
          

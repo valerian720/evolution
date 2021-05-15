@@ -148,7 +148,14 @@ namespace evolution.Core.Evolushion
 
         Individual Crossbreed(Individual alfa, Individual beta)
         {
-            // SEX
+            /* 
+         ███████╗███████╗██╗  ██╗
+         ██╔════╝██╔════╝╚██╗██╔╝
+         ███████╗█████╗   ╚███╔╝ 
+         ╚════██║██╔══╝   ██╔██╗ 
+         ███████║███████╗██╔╝ ██╗
+         ╚══════╝╚══════╝╚═╝  ╚═╝
+            */
             return alfa.Crossbreed(beta); 
         }
     }

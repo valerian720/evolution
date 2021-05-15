@@ -13,27 +13,51 @@ namespace evolution.Core.Evolushion
         // ( содержит полносвязный неориентированный граф, методы для управления им, методы для экспорта / импорта )
         int size;
 
-        double[,] netGraph;
+        int awailableAreaX;
+        int awailableAreaY;
 
-        public NetContainer(int _size)
+        double[,] netGraphWeights;
+        Vector2[] locations;
+
+        static double veryHighValue = 99999;
+
+        public NetContainer(int _size, int _awailableAreaX, int _awailableAreaY )
         {
             size = _size;
+
+            this.awailableAreaX = _awailableAreaX;
+            this.awailableAreaY = _awailableAreaY;
+
             GenFullRandomGraph();
+            CalculateNetGraphWeights();
         }
 
         void GenFullRandomGraph()
         {
-            int min = 5;
+            netGraphWeights = new double[size, size];
+            locations = new Vector2[size];
 
-            int max = 100;
-            // tmp full random
-            netGraph = new double[size, size];
+            for (int i = 0; i < size; i++)
+            {
+                locations[i] = new Vector2(StaticRandom.getInstance().Next(awailableAreaX), StaticRandom.getInstance().Next(awailableAreaY));
+            }
+
+        }
+
+        void CalculateNetGraphWeights()
+        {
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
-                    netGraph[i, j] = (double)StaticRandom.getInstance().Next(min, max);
-                    //netGraph[i, j] = 1;
+                    if (i != j)
+                    {
+                        netGraphWeights[i, j] = Mathf.Abs( locations[i].DistanceTo(locations[j]));
+                    }
+                    else
+                    {
+                        netGraphWeights[i, j] = veryHighValue;
+                    }
                 }
             }
         }
@@ -54,13 +78,16 @@ namespace evolution.Core.Evolushion
 
         public double GetValue(int A, int B)
         {
-            if (A <= netGraph.GetLength(0) && B <= netGraph.GetLength(1))
+            if (A <= netGraphWeights.GetLength(0) && B <= netGraphWeights.GetLength(1))
             {
-                return netGraph[A, B];
+                return netGraphWeights[A, B];
             }
             else
                 throw new ArgumentOutOfRangeException();
         }
 
+
+
     }
+
 }

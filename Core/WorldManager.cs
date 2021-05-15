@@ -5,9 +5,8 @@ using System;
 
 public class WorldManager : Node
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+    protected NetManager netDisplayManager = null;
+
 
     void DebugGetFitness(Genetic genetic)
     {
@@ -21,10 +20,12 @@ public class WorldManager : Node
     public override void _Ready()
     {
 
-        Net net = new Net(30);
+        Net net = new Net(30, 400, 600, netDisplayManager);
         FindShortestWay4PacketInNetCromosomeAnalyzer analyzer = new FindShortestWay4PacketInNetCromosomeAnalyzer(net.GetContainerLink());
 
         RankingSelectionHandler rankingSelection = new RankingSelectionHandler();
+
+        netDisplayManager = GetNode<NetManager>("WorldManager/NetManager");
 
         Genetic genetic = new Genetic(rankingSelection, net.GetGeneticNodeValues(), analyzer);
 
@@ -45,6 +46,8 @@ public class WorldManager : Node
         GD.Print(genetic.GetMostFittedData());
         //
         // tmp for debug
+
+        
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
