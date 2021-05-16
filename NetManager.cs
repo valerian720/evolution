@@ -48,6 +48,19 @@ public class NetManager : Node2D
 
         //    }
     }
+
+    internal void ClearScreen()
+    {
+        PCGroup.QueueFree();
+        ConnectionGroup.QueueFree();
+
+        ConnectionGroup = new Node2D();
+        PCGroup = new Node2D();
+
+        AddChild(ConnectionGroup);
+        AddChild(PCGroup);
+    }
+
     Vector2 PrepareLocation(Vector2 location) => new Vector2(location.x * koefX + margin, location.y * koefY + margin);
 
     void DrawConnection(Vector2[] locatons, double treshhold, double[,] netGraphWeights)

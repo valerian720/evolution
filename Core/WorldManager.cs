@@ -7,6 +7,10 @@ public class WorldManager : Node
 {
     protected NetManager netDisplayManager = null;
 
+    Genetic genetic = null;
+    Net net = null;
+    FindShortestWay4PacketInNetCromosomeAnalyzer analyzer = null;
+    RankingSelectionHandler rankingSelection = null;
 
     void DebugGetFitness(Genetic genetic)
     {
@@ -22,14 +26,8 @@ public class WorldManager : Node
         netDisplayManager = new NetManager();
         AddChild(netDisplayManager);
 
-        Net net = new Net(10, 600, 400, netDisplayManager);
-        FindShortestWay4PacketInNetCromosomeAnalyzer analyzer = new FindShortestWay4PacketInNetCromosomeAnalyzer(net.GetContainerLink());
 
-        RankingSelectionHandler rankingSelection = new RankingSelectionHandler();
-
-
-        Genetic genetic = new Genetic(rankingSelection, net.GetGeneticNodeValues(), analyzer);
-
+        Regenerate();
 
         // tmp for debug
         //DebugGetFitness(genetic);
@@ -49,6 +47,18 @@ public class WorldManager : Node
         // tmp for debug
 
         
+    }
+
+    public void Regenerate()
+    {
+        netDisplayManager.ClearScreen();
+
+        net = new Net(10, 600, 400, netDisplayManager);
+        analyzer = new FindShortestWay4PacketInNetCromosomeAnalyzer(net.GetContainerLink());
+        rankingSelection = new RankingSelectionHandler();
+
+
+         genetic = new Genetic(rankingSelection, net.GetGeneticNodeValues(), analyzer);
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

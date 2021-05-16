@@ -33,7 +33,7 @@ __meta__ = {
 
 [node name="NetworkSettings" parent="GUI/MarginContainer" instance=ExtResource( 4 )]
 anchor_bottom = 0.0
-margin_right = 208.0
+margin_right = 206.0
 margin_bottom = 591.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="GUI"]
@@ -45,6 +45,4 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" parent="GUI/MarginContainer2" instance=ExtResource( 1 )]
-anchor_bottom = 0.0
-margin_right = 182.0
 margin_bottom = 595.0
