@@ -22,5 +22,20 @@ namespace evolution.Core.GUI_handlers
             this.Visible = !this.Visible;
             manager.Regenerate();
         }
+
+        public void _on_RunPauseButton_pressed()
+        {
+            // пауза / продолжение работы симул€ции
+        }
+
+        public void _on_OneStepButton_pressed()
+        {
+            // симул€цию продвинуть на 1 цикл вперед
+        }
+
+        public void _on_PopulationAmountInput_text_entered(String newText)
+        {
+            // ввод параметра размера попул€ции
+        }
     }
 }

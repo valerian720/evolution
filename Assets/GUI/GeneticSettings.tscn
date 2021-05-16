@@ -58,14 +58,14 @@ margin_top = 18.0
 margin_right = 182.0
 margin_bottom = 38.0
 
-[node name="Button" type="Button" parent="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="RunPauseButton" type="Button" parent="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 76.0
 margin_bottom = 20.0
 toggle_mode = true
 text = "run/pause"
 align = 0
 
-[node name="Button2" type="Button" parent="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="OneStepButton" type="Button" parent="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 80.0
 margin_right = 148.0
 margin_bottom = 20.0
@@ -89,9 +89,9 @@ margin_bottom = 42.0
 [node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer2/VBoxContainer"]
 margin_right = 182.0
 margin_bottom = 14.0
-text = "population аmount"
+text = "population amount"
 
-[node name="LineEdit" type="LineEdit" parent="Container/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="PopulationAmountInput" type="LineEdit" parent="Container/VBoxContainer/MarginContainer2/VBoxContainer"]
 margin_top = 18.0
 margin_right = 182.0
 margin_bottom = 42.0
@@ -229,3 +229,6 @@ margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
 [connection signal="pressed" from="VisibilityButton" to="Container" method="_on_VisibilityButton_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/RunPauseButton" to="Container" method="_on_RunPauseButton_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/OneStepButton" to="Container" method="_on_OneStepButton_pressed"]
+[connection signal="text_entered" from="Container/VBoxContainer/MarginContainer2/VBoxContainer/PopulationAmountInput" to="Container" method="_on_PopulationAmountInput_text_entered"]
