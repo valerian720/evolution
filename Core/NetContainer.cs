@@ -21,15 +21,20 @@ namespace evolution.Core.Evolushion
 
         static double veryHighValue = 99999;
 
-        public NetContainer(int _size, int _awailableAreaX, int _awailableAreaY )
+        NetManager netDisplayManager;
+
+        public NetContainer(int _size, int _awailableAreaX, int _awailableAreaY, NetManager _netDisplayManager)
         {
             size = _size;
 
             this.awailableAreaX = _awailableAreaX;
             this.awailableAreaY = _awailableAreaY;
+            this.netDisplayManager = _netDisplayManager;
 
             GenFullRandomGraph();
             CalculateNetGraphWeights();
+
+            netDisplayManager.DrawCall(locations, 500, netGraphWeights); // ?
         }
 
         void GenFullRandomGraph()
@@ -61,6 +66,12 @@ namespace evolution.Core.Evolushion
                 }
             }
         }
+        //
+        void DisplayGraph()
+        {
+
+        }
+        //
 
         public void UpdateGraph()
         {

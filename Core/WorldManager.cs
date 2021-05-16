@@ -19,25 +19,26 @@ public class WorldManager : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        netDisplayManager = new NetManager();
+        AddChild(netDisplayManager);
 
-        Net net = new Net(30, 400, 600, netDisplayManager);
+        Net net = new Net(10, 600, 400, netDisplayManager);
         FindShortestWay4PacketInNetCromosomeAnalyzer analyzer = new FindShortestWay4PacketInNetCromosomeAnalyzer(net.GetContainerLink());
 
         RankingSelectionHandler rankingSelection = new RankingSelectionHandler();
 
-        netDisplayManager = GetNode<NetManager>("WorldManager/NetManager");
 
         Genetic genetic = new Genetic(rankingSelection, net.GetGeneticNodeValues(), analyzer);
 
 
         // tmp for debug
-        DebugGetFitness(genetic);
-        genetic.SelectionTest();
-        DebugGetFitness(genetic);
-        genetic.MutationTest();
-        DebugGetFitness(genetic);
-        genetic.BreedingTest();
-        DebugGetFitness(genetic);
+        //DebugGetFitness(genetic);
+        //genetic.SelectionTest();
+        //DebugGetFitness(genetic);
+        //genetic.MutationTest();
+        //DebugGetFitness(genetic);
+        //genetic.BreedingTest();
+        //DebugGetFitness(genetic);
 
         //
         genetic.RunFullCycle();

@@ -3,58 +3,84 @@ using System;
 
 public class NetManager : Node2D
 {
+    //public NetManager(int margin, float koefX, float koefY, Color lineColor, int lineWidth){}
+    
 
     private PackedScene computer = (PackedScene)ResourceLoader.Load("res://Assets/Prefabs/Computer.tscn");
 
     private Node2D PCGroup = new Node2D();
     private Node2D ConnectionGroup = new Node2D();
 
-    int collumnsCount = 5;
-    int rowsCount = 4;
 
-    int margin = 100;
+    int margin = 50;
 
-    float koefX;
-    float koefY;
+    float koefX = 1.3f;
+    float koefY = 1.3f;
+
+    Color lineColor = new Color(255, 0, 0);
+    int lineWidth = 1;
 
     public override void _Ready()
     {
         AddChild(ConnectionGroup);
         AddChild(PCGroup);
 
-        CalculateCoeffs();
-        DrawAllComputers();
-        DrawConnection();
+        //DrawCall();
     }
 
-    void CalculateCoeffs()
-    {
-        koefX = (GetViewport().GetVisibleRect().Size.x-(margin*2))/ (collumnsCount-1);
-        koefY = (GetViewport().GetVisibleRect().Size.y - (margin * 2)) / (rowsCount-1);
-    }
-    void DrawAllComputers()
+    void DrawAllComputers(Vector2[] locatons)
         {
-        for (int i = 0; i < collumnsCount; i++)
+        foreach (var location in locatons)
+        {
+            Node2D newComputer = (Node2D)computer.Instance();
+            newComputer.Position = PrepareLocation(location);
+            PCGroup.AddChild(newComputer);
+        }
+
+        //for (int i = 0; i < collumnsCount; i++)
+        //    {
+        //        for (int j = 0; j < rowsCount; j++)
+        //        {
+        //            Node2D newComputer = (Node2D)computer.Instance();
+        //            newComputer.Position = new Vector2(margin + koefX * i, margin + koefY * j);
+        //            PCGroup.AddChild(newComputer); 
+        //        }
+
+        //    }
+    }
+    Vector2 PrepareLocation(Vector2 location) => new Vector2(location.x * koefX + margin, location.y * koefY + margin);
+
+    void DrawConnection(Vector2[] locatons, double treshhold, double[,] netGraphWeights)
+    {
+        for (int i = 0; i < locatons.Length; i++)
+        {
+            for (int j = 0; j < locatons.Length; j++)
             {
-                for (int j = 0; j < rowsCount; j++)
+                if (locatons[i] != locatons[j] && netGraphWeights[i,j] < treshhold)
                 {
-                    Node2D newComputer = (Node2D)computer.Instance();
-                    newComputer.Position = new Vector2(margin + koefX * i, margin + koefY * j);
-                    PCGroup.AddChild(newComputer); 
+                    AddNewLine(PrepareLocation(locatons[i]), PrepareLocation(locatons[j]), 1+ (int)Math.Abs( netGraphWeights[i, j]/200));
                 }
-            
             }
         }
 
-    public void DrawConnection()
+    }
+
+    void AddNewLine(Vector2 start, Vector2 finish, int width)
     {
         Line2D newLine = new Line2D();
-        newLine.AddPoint(new Vector2(0, 0));
-        newLine.AddPoint(new Vector2(500, 500));
-        newLine.DefaultColor = new Color(255, 0, 0);
-        newLine.Width = 10;
+        newLine.AddPoint(start);
+        newLine.AddPoint(finish);
+        newLine.DefaultColor = lineColor;
+        newLine.Width = width;
 
         ConnectionGroup.AddChild(newLine);
+
+    }
+
+    public void DrawCall(Vector2[] locatons, double treshhold, double[,] netGraphWeights)
+    {
+        DrawAllComputers(locatons);
+        DrawConnection(locatons, treshhold, netGraphWeights);
     }
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)
