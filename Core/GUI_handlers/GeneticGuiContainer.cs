@@ -9,6 +9,8 @@ namespace evolution.Core.GUI_handlers
 {
     class GeneticGuiContainer: MarginContainer
     {
+        bool isPaused = true;
+
         WorldManager manager;
         public override void _Ready()
         {
@@ -26,6 +28,16 @@ namespace evolution.Core.GUI_handlers
         public void _on_RunPauseButton_pressed()
         {
             // пауза / продолжение работы симуляции
+            isPaused = !isPaused;
+
+            if (isPaused)
+            {
+               // manager.Run();
+            }
+            else
+            {
+               // manager.Pause();
+            }
         }
 
         public void _on_OneStepButton_pressed()
