@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/GUI/NetworkSettings.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/GUI/GeneticSettings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/1.bmp" type="Texture" id=2]
 [ext_resource path="res://Core/WorldManager.cs" type="Script" id=3]
+[ext_resource path="res://Assets/GUI/NetworkSettings.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 
@@ -17,20 +18,33 @@ position = Vector2( 513.338, 313.242 )
 scale = Vector2( 33.363, 19.9114 )
 texture = ExtResource( 2 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 368.0
+margin_right = 216.0
 margin_bottom = 601.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
-margin_right = 358.0
+[node name="NetworkSettings" parent="GUI/MarginContainer" instance=ExtResource( 4 )]
+anchor_bottom = 0.0
+margin_right = 208.0
 margin_bottom = 591.0
-size_flags_vertical = 3
 
-[node name="NetworkSettings" parent="MarginContainer" instance=ExtResource( 1 )]
-margin_right = 358.0
+[node name="MarginContainer2" type="MarginContainer" parent="GUI"]
+margin_left = 837.0
+margin_right = 1019.0
+margin_bottom = 595.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" parent="GUI/MarginContainer2" instance=ExtResource( 1 )]
+anchor_bottom = 0.0
+margin_right = 182.0
+margin_bottom = 595.0
