@@ -3,239 +3,288 @@
 [ext_resource path="res://Core/GUI_handlers/NetworkGuiContainer.cs" type="Script" id=1]
 
 [node name="MetaContainer" type="VBoxContainer"]
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 600.0
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VisibilityButton" type="Button" parent="."]
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 20.0
 text = "G"
 
 [node name="Container" type="MarginContainer" parent="."]
 margin_top = 24.0
-margin_right = 182.0
-margin_bottom = 449.0
+margin_right = 308.0
+margin_bottom = 600.0
+size_flags_vertical = 3
 script = ExtResource( 1 )
 
-[node name="Panel" type="Panel" parent="Container"]
-margin_right = 182.0
-margin_bottom = 425.0
+[node name="Background" type="Panel" parent="Container"]
+margin_right = 308.0
+margin_bottom = 576.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
-margin_right = 182.0
-margin_bottom = 425.0
+[node name="VGroup" type="VBoxContainer" parent="Container"]
+margin_right = 308.0
+margin_bottom = 576.0
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Container/VBoxContainer"]
+[node name="Label" type="Label" parent="Container/VGroup"]
 modulate = Color( 0, 1, 0.0117647, 1 )
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 14.0
 text = "GENETIC"
 align = 1
 uppercase = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Container/VBoxContainer"]
+[node name="Header" type="MarginContainer" parent="Container/VGroup"]
 margin_top = 18.0
-margin_right = 182.0
-margin_bottom = 91.0
+margin_right = 308.0
+margin_bottom = 74.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer/MarginContainer"]
-margin_right = 182.0
-margin_bottom = 73.0
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/Header"]
+margin_right = 308.0
+margin_bottom = 56.0
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 182.0
-margin_bottom = 31.0
+[node name="Label" type="Label" parent="Container/VGroup/Header/VGroup"]
+margin_right = 308.0
+margin_bottom = 14.0
 text = "Valerian V 204-321 Mospolytech"
 autowrap = true
 
-[node name="Label2" type="Label" parent="Container/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 35.0
-margin_right = 182.0
-margin_bottom = 49.0
+[node name="Label2" type="Label" parent="Container/VGroup/Header/VGroup"]
+margin_top = 18.0
+margin_right = 308.0
+margin_bottom = 32.0
 text = "simulation mode"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 53.0
-margin_right = 182.0
-margin_bottom = 73.0
+[node name="HGroup" type="HBoxContainer" parent="Container/VGroup/Header/VGroup"]
+margin_top = 36.0
+margin_right = 308.0
+margin_bottom = 56.0
 
-[node name="RunPauseButton" type="Button" parent="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="RunPauseButton" type="Button" parent="Container/VGroup/Header/VGroup/HGroup"]
 margin_right = 76.0
 margin_bottom = 20.0
 toggle_mode = true
 text = "run/pause"
 align = 0
 
-[node name="OneStepButton" type="Button" parent="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="OneStepButton" type="Button" parent="Container/VGroup/Header/VGroup/HGroup"]
 margin_left = 80.0
 margin_right = 148.0
 margin_bottom = 20.0
 text = "one step"
 align = 2
 
-[node name="VSplitContainer" type="VSplitContainer" parent="Container/VBoxContainer"]
-margin_top = 95.0
-margin_right = 182.0
-margin_bottom = 95.0
+[node name="VSplitContainer" type="VSplitContainer" parent="Container/VGroup"]
+margin_top = 78.0
+margin_right = 308.0
+margin_bottom = 78.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="Container/VBoxContainer"]
-margin_top = 99.0
-margin_right = 182.0
-margin_bottom = 141.0
+[node name="PopulationAmountInput" type="MarginContainer" parent="Container/VGroup"]
+margin_top = 82.0
+margin_right = 308.0
+margin_bottom = 124.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer/MarginContainer2"]
-margin_right = 182.0
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/PopulationAmountInput"]
+margin_right = 308.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer2/VBoxContainer"]
-margin_right = 182.0
+[node name="Label" type="Label" parent="Container/VGroup/PopulationAmountInput/VGroup"]
+margin_right = 308.0
 margin_bottom = 14.0
 text = "population amount"
 
-[node name="PopulationAmountInput" type="LineEdit" parent="Container/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="PopulationAmountInput" type="LineEdit" parent="Container/VGroup/PopulationAmountInput/VGroup" groups=[
+"PopulationAmount",
+]]
 margin_top = 18.0
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="MarginContainer3" type="MarginContainer" parent="Container/VBoxContainer"]
-margin_top = 145.0
-margin_right = 182.0
-margin_bottom = 187.0
+[node name="CromosomeAmount" type="MarginContainer" parent="Container/VGroup"]
+margin_top = 128.0
+margin_right = 308.0
+margin_bottom = 170.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer/MarginContainer3"]
-margin_right = 182.0
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/CromosomeAmount"]
+margin_right = 308.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer3/VBoxContainer"]
-margin_right = 182.0
+[node name="Label" type="Label" parent="Container/VGroup/CromosomeAmount/VGroup"]
+margin_right = 308.0
 margin_bottom = 14.0
-text = "cromosome аmount"
+text = "cromosome amount"
 
-[node name="LineEdit" type="LineEdit" parent="Container/VBoxContainer/MarginContainer3/VBoxContainer"]
+[node name="CromosomeAmount" type="LineEdit" parent="Container/VGroup/CromosomeAmount/VGroup" groups=[
+"CromosomeAmount",
+]]
 margin_top = 18.0
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="MarginContainer4" type="MarginContainer" parent="Container/VBoxContainer"]
-margin_top = 191.0
-margin_right = 182.0
-margin_bottom = 233.0
+[node name="CromosomeLength" type="MarginContainer" parent="Container/VGroup"]
+margin_top = 174.0
+margin_right = 308.0
+margin_bottom = 216.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer/MarginContainer4"]
-margin_right = 182.0
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/CromosomeLength"]
+margin_right = 308.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer4/VBoxContainer"]
-margin_right = 182.0
+[node name="Label" type="Label" parent="Container/VGroup/CromosomeLength/VGroup"]
+margin_right = 308.0
 margin_bottom = 14.0
 text = "cromosome length"
 
-[node name="LineEdit" type="LineEdit" parent="Container/VBoxContainer/MarginContainer4/VBoxContainer"]
+[node name="CromosomeLength" type="LineEdit" parent="Container/VGroup/CromosomeLength/VGroup" groups=[
+"CromosomeLength",
+]]
 margin_top = 18.0
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="HSeparator" type="HSeparator" parent="Container/VBoxContainer"]
-margin_top = 237.0
-margin_right = 182.0
-margin_bottom = 241.0
+[node name="HSeparator" type="HSeparator" parent="Container/VGroup"]
+margin_top = 220.0
+margin_right = 308.0
+margin_bottom = 224.0
 
-[node name="MarginContainer5" type="MarginContainer" parent="Container/VBoxContainer"]
-margin_top = 245.0
-margin_right = 182.0
-margin_bottom = 287.0
+[node name="MutationAmount" type="MarginContainer" parent="Container/VGroup"]
+margin_top = 228.0
+margin_right = 308.0
+margin_bottom = 270.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer/MarginContainer5"]
-margin_right = 182.0
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/MutationAmount"]
+margin_right = 308.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer5/VBoxContainer"]
-margin_right = 182.0
+[node name="Label" type="Label" parent="Container/VGroup/MutationAmount/VGroup"]
+margin_right = 308.0
 margin_bottom = 14.0
 text = "mutation amount"
 
-[node name="LineEdit" type="LineEdit" parent="Container/VBoxContainer/MarginContainer5/VBoxContainer"]
+[node name="MutationAmount" type="LineEdit" parent="Container/VGroup/MutationAmount/VGroup" groups=[
+"MutationAmount",
+]]
 margin_top = 18.0
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="MarginContainer6" type="MarginContainer" parent="Container/VBoxContainer"]
-margin_top = 291.0
-margin_right = 182.0
-margin_bottom = 333.0
+[node name="MutationRate" type="MarginContainer" parent="Container/VGroup"]
+margin_top = 274.0
+margin_right = 308.0
+margin_bottom = 316.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer/MarginContainer6"]
-margin_right = 182.0
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/MutationRate"]
+margin_right = 308.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer6/VBoxContainer"]
-margin_right = 182.0
+[node name="Label" type="Label" parent="Container/VGroup/MutationRate/VGroup"]
+margin_right = 308.0
 margin_bottom = 14.0
 text = "mutation rate out of 100"
 
-[node name="LineEdit" type="LineEdit" parent="Container/VBoxContainer/MarginContainer6/VBoxContainer"]
+[node name="MutationRate" type="LineEdit" parent="Container/VGroup/MutationRate/VGroup" groups=[
+"MutationRate",
+]]
 margin_top = 18.0
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="MarginContainer7" type="MarginContainer" parent="Container/VBoxContainer"]
-margin_top = 337.0
-margin_right = 182.0
-margin_bottom = 379.0
+[node name="SelectionCount" type="MarginContainer" parent="Container/VGroup"]
+margin_top = 320.0
+margin_right = 308.0
+margin_bottom = 362.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer/MarginContainer7"]
-margin_right = 182.0
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/SelectionCount"]
+margin_right = 308.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer7/VBoxContainer"]
-margin_right = 182.0
+[node name="Label" type="Label" parent="Container/VGroup/SelectionCount/VGroup"]
+margin_right = 308.0
 margin_bottom = 14.0
 text = "selection count"
 
-[node name="LineEdit" type="LineEdit" parent="Container/VBoxContainer/MarginContainer7/VBoxContainer"]
+[node name="SelectionCount" type="LineEdit" parent="Container/VGroup/SelectionCount/VGroup" groups=[
+"SelectionCount",
+]]
 margin_top = 18.0
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="MarginContainer8" type="MarginContainer" parent="Container/VBoxContainer"]
-margin_top = 383.0
-margin_right = 182.0
-margin_bottom = 425.0
+[node name="IterationCount" type="MarginContainer" parent="Container/VGroup"]
+margin_top = 366.0
+margin_right = 308.0
+margin_bottom = 408.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer/MarginContainer8"]
-margin_right = 182.0
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/IterationCount"]
+margin_right = 308.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/MarginContainer8/VBoxContainer"]
-margin_right = 182.0
+[node name="Label" type="Label" parent="Container/VGroup/IterationCount/VGroup"]
+margin_right = 308.0
 margin_bottom = 14.0
 text = "iteration count"
 
-[node name="LineEdit" type="LineEdit" parent="Container/VBoxContainer/MarginContainer8/VBoxContainer"]
+[node name="IterationCount" type="LineEdit" parent="Container/VGroup/IterationCount/VGroup" groups=[
+"IterationCount",
+]]
 margin_top = 18.0
-margin_right = 182.0
+margin_right = 308.0
 margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
+
+[node name="BestSpeciesGenome" type="MarginContainer" parent="Container/VGroup"]
+margin_top = 412.0
+margin_right = 308.0
+margin_bottom = 576.0
+size_flags_vertical = 3
+
+[node name="VGroup" type="VBoxContainer" parent="Container/VGroup/BestSpeciesGenome"]
+margin_right = 308.0
+margin_bottom = 164.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Container/VGroup/BestSpeciesGenome/VGroup"]
+margin_right = 308.0
+margin_bottom = 14.0
+text = "best species genome"
+
+[node name="BestSpeciesGenome" type="TextEdit" parent="Container/VGroup/BestSpeciesGenome/VGroup" groups=[
+"BestSpeciesGenome",
+]]
+margin_top = 18.0
+margin_right = 308.0
+margin_bottom = 164.0
+size_flags_vertical = 3
+text = "Score=5417,80123901367
+
+|[ID: 1]|[ID: 2]|[ID: 1]|[ID: 2]|[ID: 1]|[ID: 8]|[ID: 1]|[ID: 8]|[ID: 2]|[ID: 1]|[ID: 2]|[ID: 1]|[ID: 8]|[ID: 1]|[ID: 2]|[ID: 1]|[ID: 2]|[ID: 1]|[ID: 8]|[ID: 1]|[ID: 8]|[ID: 4]|[ID: 1]|[ID: 8]|[ID: 2]|[ID: 1]|[ID: 2]|[ID: 1]|[ID: 8]|[ID: 1]|
+
+|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 6]|[ID: 3]|[ID: 5]|[ID: 3]|[ID: 5]|
+"
+readonly = true
+smooth_scrolling = true
 [connection signal="pressed" from="VisibilityButton" to="Container" method="_on_VisibilityButton_pressed"]
-[connection signal="pressed" from="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/RunPauseButton" to="Container" method="_on_RunPauseButton_pressed"]
-[connection signal="pressed" from="Container/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/OneStepButton" to="Container" method="_on_OneStepButton_pressed"]
-[connection signal="text_entered" from="Container/VBoxContainer/MarginContainer2/VBoxContainer/PopulationAmountInput" to="Container" method="_on_PopulationAmountInput_text_entered"]
+[connection signal="pressed" from="Container/VGroup/Header/VGroup/HGroup/RunPauseButton" to="Container" method="_on_RunPauseButton_pressed"]
+[connection signal="pressed" from="Container/VGroup/Header/VGroup/HGroup/OneStepButton" to="Container" method="_on_OneStepButton_pressed"]
+[connection signal="text_entered" from="Container/VGroup/PopulationAmountInput/VGroup/PopulationAmountInput" to="Container" method="_on_PopulationAmountInput_text_entered"]

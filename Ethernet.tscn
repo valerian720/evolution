@@ -45,4 +45,5 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" parent="GUI/MarginContainer2" instance=ExtResource( 1 )]
+margin_right = 182.0
 margin_bottom = 595.0

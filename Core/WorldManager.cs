@@ -72,8 +72,8 @@ public class WorldManager : Node
 
     public String ProgressPopulation()
     {
-        //genetic.
-        return "";
+        genetic.ProgressPopulation();
+        return genetic.GetMostFittedData();
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

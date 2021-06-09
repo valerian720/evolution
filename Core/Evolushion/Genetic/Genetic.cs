@@ -57,6 +57,11 @@ namespace evolution.Core.Evolushion {
             }
         }
 
+        public void ProgressPopulation()
+        {
+            controller.ProgressPopulation();
+        }
+
         public string GetMostFittedData()
         {
             return controller.GetMostFittedGenomeFingerprint();
