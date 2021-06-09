@@ -6,16 +6,16 @@ namespace evolution.Core.Evolushion {
     public class Genetic
     {
         // (содержит гиперпараметры)
-        int populationAmount = 100;
-        int cromosomeAmount = 2;
-        int cromosomeLength = 30;
-
-        int mutationAmount = 10;
-        int mutationRateOutOf100 = 50;
-
-        int selectionCount = 50;
-
-        int iterationCount = 250;
+        public int populationAmount = 100;
+        public int cromosomeAmount = 2;
+        public int cromosomeLength = 30;
+         
+        public int mutationAmount = 10;
+        public int mutationRateOutOf100 = 50;
+         
+        public int selectionCount = 50;
+         
+        public int iterationCount = 250;
 
         GeneticController controller;
 

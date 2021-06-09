@@ -1,9 +1,5 @@
-﻿using Godot;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using evolution.Core.Util;
+using Godot;
 
 namespace evolution.Core.GUI_handlers
 {
@@ -19,6 +15,11 @@ namespace evolution.Core.GUI_handlers
         public void _on_VisibilityButton_pressed()
         {
             this.Visible = !this.Visible;
+        }
+
+        public void _on_RunPauseButton_pressed()
+        {
+            StaticWorldManagerDispenser.GetWorldManager(this).Regenerate();
         }
     }
 }

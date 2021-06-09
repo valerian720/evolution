@@ -46,8 +46,17 @@ public class WorldManager : Node
         //
         // tmp for debug
 
-        
+
     }
+
+    // bruh
+    public int PopulationAmount { get => genetic.populationAmount; set { genetic.populationAmount = value; } }
+    public int CromosomeAmount { get => genetic.cromosomeAmount; set { genetic.cromosomeAmount = value; } }
+    public int CromosomeLength { get => genetic.cromosomeLength; set { genetic.cromosomeLength = value; } }
+    public int MutationAmount { get => genetic.mutationAmount; set { genetic.mutationAmount = value; } }
+    public int MutationRateOutOf100 { get => genetic.mutationRateOutOf100; set { genetic.mutationRateOutOf100 = value; } }
+    public int SelectionCount { get => genetic.selectionCount; set { genetic.selectionCount = value; } }
+    public int IterationCount { get => genetic.iterationCount; set { genetic.iterationCount = value; } }
 
     public void Regenerate()
     {
@@ -59,6 +68,12 @@ public class WorldManager : Node
 
 
          genetic = new Genetic(rankingSelection, net.GetGeneticNodeValues(), analyzer);
+    }
+
+    public String ProgressPopulation()
+    {
+        //genetic.
+        return "";
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
