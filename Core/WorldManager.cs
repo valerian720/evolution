@@ -12,12 +12,18 @@ public class WorldManager : Node
     FindShortestWay4PacketInNetCromosomeAnalyzer analyzer = null;
     RankingSelectionHandler rankingSelection = null;
 
+
+    public WorldManager()
+    {
+        
+    }
+
     void DebugGetFitness(Genetic genetic)
     {
         (double score, string scores) = genetic.GetFitness();
         GD.Print(score);
         GD.Print("======");
-        //GD.Print(scores);
+        GD.Print(scores);
     }
 
     // Called when the node enters the scene tree for the first time.
@@ -39,10 +45,11 @@ public class WorldManager : Node
         //DebugGetFitness(genetic);
 
         //
-        genetic.RunFullCycle();
+        //genetic.RunFullCycle();
 
-        DebugGetFitness(genetic);
-        GD.Print(genetic.GetMostFittedData());
+        //DebugGetFitness(genetic);
+        //GD.Print(genetic.GetMostFittedData());
+        //Regenerate();
         //
         // tmp for debug
 
@@ -63,22 +70,21 @@ public class WorldManager : Node
         netDisplayManager.ClearScreen();
 
         net = new Net(10, 600, 400, netDisplayManager);
-        analyzer = new FindShortestWay4PacketInNetCromosomeAnalyzer(net.GetContainerLink());
+        analyzer = new FindShortestWay4PacketInNetCromosomeAnalyzer(net.GetContainerLink(), net.GetGeneticNodeValues());
         rankingSelection = new RankingSelectionHandler();
 
 
          genetic = new Genetic(rankingSelection, net.GetGeneticNodeValues(), analyzer);
     }
 
-    public String ProgressPopulation()
+    internal String ProgressPopulation()
     {
-        genetic.ProgressPopulation();
-        return genetic.GetMostFittedData();
+         genetic.ProgressPopulation();
+         return genetic.GetMostFittedData();
     }
 
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
+    public int GetCurrentIteration()
+    {
+        return genetic.GetCurrentIteration();
+    }
 }

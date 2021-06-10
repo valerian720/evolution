@@ -37,7 +37,8 @@ margin_right = 206.0
 margin_bottom = 591.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="GUI"]
-margin_left = 837.0
+margin_left = 686.0
+margin_top = 14.0
 margin_right = 1019.0
 margin_bottom = 595.0
 __meta__ = {
@@ -45,5 +46,5 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" parent="GUI/MarginContainer2" instance=ExtResource( 1 )]
-margin_right = 182.0
-margin_bottom = 595.0
+margin_right = 333.0
+margin_bottom = 581.0

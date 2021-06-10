@@ -7,7 +7,7 @@ namespace evolution.Core.Evolushion {
     {
         // (содержит гиперпараметры)
         public int populationAmount = 100;
-        public int cromosomeAmount = 2;
+        public int cromosomeAmount = 1;
         public int cromosomeLength = 30;
          
         public int mutationAmount = 10;
@@ -16,6 +16,8 @@ namespace evolution.Core.Evolushion {
         public int selectionCount = 50;
          
         public int iterationCount = 250;
+
+        private int currentIteration = 0;
 
         GeneticController controller;
 
@@ -53,13 +55,26 @@ namespace evolution.Core.Evolushion {
         {
             for (int i = 0; i < iterationCount; i++)
             {
-                controller.ProgressPopulation();
+                ProgressPopulation();
+                //GD.Print(currentIteration);
             }
         }
 
         public void ProgressPopulation()
         {
-            controller.ProgressPopulation();
+            //if (currentIteration < iterationCount) // TODO
+            {
+                controller.ProgressPopulation();
+                controller.GetFitness();
+
+                currentIteration++;
+            }
+            
+        }
+
+        public int GetCurrentIteration()
+        {
+            return currentIteration;
         }
 
         public string GetMostFittedData()

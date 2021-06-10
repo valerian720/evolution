@@ -45,11 +45,11 @@ uppercase = true
 [node name="Header" type="MarginContainer" parent="Container/VGroup"]
 margin_top = 18.0
 margin_right = 308.0
-margin_bottom = 74.0
+margin_bottom = 102.0
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/Header"]
 margin_right = 308.0
-margin_bottom = 56.0
+margin_bottom = 84.0
 
 [node name="Label" type="Label" parent="Container/VGroup/Header/VGroup"]
 margin_right = 308.0
@@ -57,40 +57,73 @@ margin_bottom = 14.0
 text = "Valerian V 204-321 Mospolytech"
 autowrap = true
 
-[node name="Label2" type="Label" parent="Container/VGroup/Header/VGroup"]
+[node name="ProcessDisplay" type="Label" parent="Container/VGroup/Header/VGroup" groups=[
+"ProcessDisplay",
+]]
 margin_top = 18.0
 margin_right = 308.0
 margin_bottom = 32.0
-text = "simulation mode"
+text = "simulation mode 0/100"
 
 [node name="HGroup" type="HBoxContainer" parent="Container/VGroup/Header/VGroup"]
 margin_top = 36.0
 margin_right = 308.0
 margin_bottom = 56.0
 
+[node name="Regenerate" type="Button" parent="Container/VGroup/Header/VGroup/HGroup"]
+margin_right = 81.0
+margin_bottom = 20.0
+text = "regenerate"
+align = 0
+
 [node name="RunPauseButton" type="Button" parent="Container/VGroup/Header/VGroup/HGroup"]
-margin_right = 76.0
+margin_left = 85.0
+margin_right = 161.0
 margin_bottom = 20.0
 toggle_mode = true
 text = "run/pause"
 align = 0
 
 [node name="OneStepButton" type="Button" parent="Container/VGroup/Header/VGroup/HGroup"]
-margin_left = 80.0
-margin_right = 148.0
+margin_left = 165.0
+margin_right = 233.0
 margin_bottom = 20.0
+rect_pivot_offset = Vector2( 55.7071, 10 )
 text = "one step"
 align = 2
 
-[node name="VSplitContainer" type="VSplitContainer" parent="Container/VGroup"]
-margin_top = 78.0
+[node name="HGroupSimulationRate" type="HBoxContainer" parent="Container/VGroup/Header/VGroup"]
+margin_top = 60.0
 margin_right = 308.0
-margin_bottom = 78.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Container/VGroup/Header/VGroup/HGroupSimulationRate"]
+margin_top = 5.0
+margin_right = 152.0
+margin_bottom = 19.0
+text = "rate of sim (per second)"
+
+[node name="SimulationRate" type="LineEdit" parent="Container/VGroup/Header/VGroup/HGroupSimulationRate" groups=[
+"SimulationRate",
+]]
+margin_left = 156.0
+margin_right = 308.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Container/VGroup"]
+margin_top = 106.0
+margin_right = 308.0
+margin_bottom = 106.0
 
 [node name="PopulationAmountInput" type="MarginContainer" parent="Container/VGroup"]
-margin_top = 82.0
+margin_top = 110.0
 margin_right = 308.0
-margin_bottom = 124.0
+margin_bottom = 152.0
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/PopulationAmountInput"]
 margin_right = 308.0
@@ -111,9 +144,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="CromosomeAmount" type="MarginContainer" parent="Container/VGroup"]
-margin_top = 128.0
+margin_top = 156.0
 margin_right = 308.0
-margin_bottom = 170.0
+margin_bottom = 198.0
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/CromosomeAmount"]
 margin_right = 308.0
@@ -134,9 +167,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="CromosomeLength" type="MarginContainer" parent="Container/VGroup"]
-margin_top = 174.0
+margin_top = 202.0
 margin_right = 308.0
-margin_bottom = 216.0
+margin_bottom = 244.0
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/CromosomeLength"]
 margin_right = 308.0
@@ -157,14 +190,14 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="HSeparator" type="HSeparator" parent="Container/VGroup"]
-margin_top = 220.0
+margin_top = 248.0
 margin_right = 308.0
-margin_bottom = 224.0
+margin_bottom = 252.0
 
 [node name="MutationAmount" type="MarginContainer" parent="Container/VGroup"]
-margin_top = 228.0
+margin_top = 256.0
 margin_right = 308.0
-margin_bottom = 270.0
+margin_bottom = 298.0
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/MutationAmount"]
 margin_right = 308.0
@@ -185,9 +218,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="MutationRate" type="MarginContainer" parent="Container/VGroup"]
-margin_top = 274.0
+margin_top = 302.0
 margin_right = 308.0
-margin_bottom = 316.0
+margin_bottom = 344.0
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/MutationRate"]
 margin_right = 308.0
@@ -208,9 +241,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="SelectionCount" type="MarginContainer" parent="Container/VGroup"]
-margin_top = 320.0
+margin_top = 348.0
 margin_right = 308.0
-margin_bottom = 362.0
+margin_bottom = 390.0
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/SelectionCount"]
 margin_right = 308.0
@@ -231,9 +264,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="IterationCount" type="MarginContainer" parent="Container/VGroup"]
-margin_top = 366.0
+margin_top = 394.0
 margin_right = 308.0
-margin_bottom = 408.0
+margin_bottom = 436.0
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/IterationCount"]
 margin_right = 308.0
@@ -254,14 +287,14 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="BestSpeciesGenome" type="MarginContainer" parent="Container/VGroup"]
-margin_top = 412.0
+margin_top = 440.0
 margin_right = 308.0
 margin_bottom = 576.0
 size_flags_vertical = 3
 
 [node name="VGroup" type="VBoxContainer" parent="Container/VGroup/BestSpeciesGenome"]
 margin_right = 308.0
-margin_bottom = 164.0
+margin_bottom = 136.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Container/VGroup/BestSpeciesGenome/VGroup"]
@@ -274,7 +307,7 @@ text = "best species genome"
 ]]
 margin_top = 18.0
 margin_right = 308.0
-margin_bottom = 164.0
+margin_bottom = 136.0
 size_flags_vertical = 3
 text = "Score=5417,80123901367
 
@@ -285,6 +318,14 @@ text = "Score=5417,80123901367
 readonly = true
 smooth_scrolling = true
 [connection signal="pressed" from="VisibilityButton" to="Container" method="_on_VisibilityButton_pressed"]
+[connection signal="pressed" from="Container/VGroup/Header/VGroup/HGroup/Regenerate" to="Container" method="_on_Regenerate_pressed"]
 [connection signal="pressed" from="Container/VGroup/Header/VGroup/HGroup/RunPauseButton" to="Container" method="_on_RunPauseButton_pressed"]
 [connection signal="pressed" from="Container/VGroup/Header/VGroup/HGroup/OneStepButton" to="Container" method="_on_OneStepButton_pressed"]
+[connection signal="text_entered" from="Container/VGroup/Header/VGroup/HGroupSimulationRate/SimulationRate" to="Container" method="_on_SimulationRate_text_entered"]
 [connection signal="text_entered" from="Container/VGroup/PopulationAmountInput/VGroup/PopulationAmountInput" to="Container" method="_on_PopulationAmountInput_text_entered"]
+[connection signal="text_entered" from="Container/VGroup/CromosomeAmount/VGroup/CromosomeAmount" to="Container" method="_on_CromosomeAmount_text_entered"]
+[connection signal="text_entered" from="Container/VGroup/CromosomeLength/VGroup/CromosomeLength" to="Container" method="_on_CromosomeLength_text_entered"]
+[connection signal="text_entered" from="Container/VGroup/MutationAmount/VGroup/MutationAmount" to="Container" method="_on_MutationAmount_text_entered"]
+[connection signal="text_entered" from="Container/VGroup/MutationRate/VGroup/MutationRate" to="Container" method="_on_MutationRate_text_entered"]
+[connection signal="text_entered" from="Container/VGroup/SelectionCount/VGroup/SelectionCount" to="Container" method="_on_SelectionCount_text_entered"]
+[connection signal="text_entered" from="Container/VGroup/IterationCount/VGroup/IterationCount" to="Container" method="_on_IterationCount_text_entered"]

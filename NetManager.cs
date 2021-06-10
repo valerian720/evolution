@@ -30,12 +30,15 @@ public class NetManager : Node2D
 
     void DrawAllComputers(Vector2[] locatons)
         {
-        foreach (var location in locatons)
-        {
-            Node2D newComputer = (Node2D)computer.Instance();
-            newComputer.Position = PrepareLocation(location);
-            PCGroup.AddChild(newComputer);
-        }
+            int computerNumber = 0;
+            foreach (var location in locatons)
+            {
+                Node2D newComputer = (Node2D)computer.Instance();
+                newComputer.Position = PrepareLocation(location);
+                ((Label) newComputer.GetChild(newComputer.GetChildCount() - 1)).Text = computerNumber.ToString();
+                PCGroup.AddChild(newComputer);
+                computerNumber++;
+            }
 
         //for (int i = 0; i < collumnsCount; i++)
         //    {
