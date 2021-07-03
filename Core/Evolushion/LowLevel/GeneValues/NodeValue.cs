@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace evolution.Core.Evolushion
 {
-    class NodeValue : GeneValue
+    public class NodeValue : GeneValue
     {
         int nodeId;
 

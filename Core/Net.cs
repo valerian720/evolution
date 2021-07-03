@@ -1,4 +1,5 @@
-﻿using System;
+﻿using evolution.Core.Net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,21 @@ namespace evolution.Core.Evolushion
     {
         // (содержит гиперпараметры)
         int netSize;
+        NetTopology netTopology;
 
         NetContainer container;
 
-        public Net(int size, int awailableAreaX, int awailableAreaY, NetManager netDisplayManager)
+        public Net(int size, int awailableAreaX, int awailableAreaY, NetManager netDisplayManager, NetTopology _netTopology)
         {
             this.netSize = size;
-            container = new NetContainer(size, awailableAreaX, awailableAreaY, netDisplayManager);
+            this.netTopology = _netTopology;
+            container = new NetContainer(size, awailableAreaX, awailableAreaY, netDisplayManager, netTopology);
         }
 
+        public void UpdateNetTopology(NetTopology newNetTopology)
+        {
+            container.UpdateTopology(newNetTopology);
+        }
          
 
         public NetContainer GetContainerLink() => container;

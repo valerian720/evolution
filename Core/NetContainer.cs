@@ -1,4 +1,5 @@
-﻿using evolution.Core.Util;
+﻿using evolution.Core.Net;
+using evolution.Core.Util;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace evolution.Core.Evolushion
 
         NetManager netDisplayManager;
 
-        public NetContainer(int _size, int _awailableAreaX, int _awailableAreaY, NetManager _netDisplayManager)
+        public NetContainer(int _size, int _awailableAreaX, int _awailableAreaY, NetManager _netDisplayManager, NetTopology topology)
         {
             size = _size;
 
@@ -32,8 +33,16 @@ namespace evolution.Core.Evolushion
             this.netDisplayManager = _netDisplayManager;
 
             GenFullRandomGraph();
-            CalculateNetGraphWeights();
+            netGraphWeights = topology.CalculateNetGraphWeights(size, locations, veryHighValue);
+            //CalculateNetGraphWeights();
 
+            netDisplayManager.DrawCall(locations, 500, netGraphWeights); // ?
+        }
+
+        public void UpdateTopology(NetTopology topology)
+        {
+            netGraphWeights = topology.CalculateNetGraphWeights(size, locations, veryHighValue);
+            //CalculateNetGraphWeights();
             netDisplayManager.DrawCall(locations, 500, netGraphWeights); // ?
         }
 
@@ -49,23 +58,23 @@ namespace evolution.Core.Evolushion
 
         }
 
-        void CalculateNetGraphWeights()
-        {
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    if (i != j)
-                    {
-                        netGraphWeights[i, j] = Mathf.Abs( locations[i].DistanceTo(locations[j]));
-                    }
-                    else
-                    {
-                        netGraphWeights[i, j] = veryHighValue;
-                    }
-                }
-            }
-        }
+        //void CalculateNetGraphWeights()
+        //{
+        //    for (int i = 0; i < size; i++)
+        //    {
+        //        for (int j = 0; j < size; j++)
+        //        {
+        //            if (i != j)
+        //            {
+        //                netGraphWeights[i, j] = Mathf.Abs( locations[i].DistanceTo(locations[j]));
+        //            }
+        //            else
+        //            {
+        //                netGraphWeights[i, j] = veryHighValue;
+        //            }
+        //        }
+        //    }
+        //}
         //
         void DisplayGraph()
         {

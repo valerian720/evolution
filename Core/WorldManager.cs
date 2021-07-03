@@ -1,5 +1,7 @@
 using evolution.Core.Evolushion;
 using evolution.Core.Evolushion.LowLevel.SelectionHandlers;
+using evolution.Core.Net;
+using evolution.Core.Net.NetTopologyExecutions;
 using Godot;
 using System;
 
@@ -11,7 +13,7 @@ public class WorldManager : Node
     Net net = null;
     FindShortestWay4PacketInNetCromosomeAnalyzer analyzer = null;
     RankingSelectionHandler rankingSelection = null;
-
+    NetTopology previousNetTopology;
 
     public WorldManager()
     {
@@ -56,6 +58,21 @@ public class WorldManager : Node
 
     }
 
+    internal void SetNetTopology(NetTopology netTopology = null)
+    {
+
+        netDisplayManager.ClearScreen();
+
+        if (netTopology == null)
+        {
+            netTopology = new AllToAllNetTopology();
+        }
+
+        net = new Net(10, 600, 400, netDisplayManager, netTopology);
+        previousNetTopology = netTopology;
+
+    }
+
     // bruh
     public int PopulationAmount { get => genetic.populationAmount; set { genetic.populationAmount = value; } }
     public int CromosomeAmount { get => genetic.cromosomeAmount; set { genetic.cromosomeAmount = value; } }
@@ -67,9 +84,9 @@ public class WorldManager : Node
 
     public void Regenerate()
     {
-        netDisplayManager.ClearScreen();
 
-        net = new Net(10, 600, 400, netDisplayManager);
+        SetNetTopology(previousNetTopology);
+
         analyzer = new FindShortestWay4PacketInNetCromosomeAnalyzer(net.GetContainerLink(), net.GetGeneticNodeValues());
         rankingSelection = new RankingSelectionHandler();
 

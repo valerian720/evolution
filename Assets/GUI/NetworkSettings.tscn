@@ -24,14 +24,14 @@ script = ExtResource( 1 )
 margin_right = 208.0
 margin_bottom = 180.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="container"]
+[node name="VGroup" type="VBoxContainer" parent="container"]
 margin_right = 208.0
 margin_bottom = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="container/VBoxContainer"]
+[node name="Label" type="Label" parent="container/VGroup"]
 modulate = Color( 0, 0.25098, 1, 1 )
 margin_right = 208.0
 margin_bottom = 14.0
@@ -39,115 +39,116 @@ text = "NETWORK"
 align = 1
 uppercase = true
 
-[node name="MarginContainer" type="MarginContainer" parent="container/VBoxContainer"]
+[node name="TopologyBlock" type="MarginContainer" parent="container/VGroup"]
 margin_top = 18.0
 margin_right = 208.0
 margin_bottom = 56.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="container/VBoxContainer/MarginContainer"]
+[node name="VGroup" type="VBoxContainer" parent="container/VGroup/TopologyBlock"]
 margin_right = 208.0
 margin_bottom = 38.0
 
-[node name="Label" type="Label" parent="container/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="OptionTopologyLabel" type="Label" parent="container/VGroup/TopologyBlock/VGroup"]
 margin_right = 208.0
 margin_bottom = 14.0
 text = "Topology"
 
-[node name="OptionButton" type="OptionButton" parent="container/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="OptionTopology" type="OptionButton" parent="container/VGroup/TopologyBlock/VGroup"]
 margin_top = 18.0
 margin_right = 208.0
 margin_bottom = 38.0
-text = "star"
-items = [ "star", null, false, 0, null, "all to all", null, false, 1, null ]
+text = "all to all"
+items = [ "all to all", null, false, 0, null, "star", null, false, 1, null, "ring", null, false, 2, null ]
 selected = 0
 
-[node name="VSplitContainer" type="VSplitContainer" parent="container/VBoxContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="container/VGroup"]
 margin_top = 60.0
 margin_right = 208.0
 margin_bottom = 60.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="container/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="container/VGroup"]
 margin_top = 64.0
 margin_right = 208.0
 margin_bottom = 106.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="container/VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="container/VGroup/MarginContainer2"]
 margin_right = 208.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="container/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="container/VGroup/MarginContainer2/VBoxContainer"]
 margin_right = 208.0
 margin_bottom = 14.0
-text = "Topology"
+text = "Bruh"
 
-[node name="LineEdit" type="LineEdit" parent="container/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="container/VGroup/MarginContainer2/VBoxContainer"]
 margin_top = 18.0
 margin_right = 208.0
 margin_bottom = 42.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="MarginContainer3" type="MarginContainer" parent="container/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="container/VGroup"]
 margin_top = 110.0
 margin_right = 208.0
 margin_bottom = 180.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="container/VBoxContainer/MarginContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="container/VGroup/MarginContainer3"]
 margin_right = 208.0
 margin_bottom = 70.0
 
-[node name="Label" type="Label" parent="container/VBoxContainer/MarginContainer3/VBoxContainer"]
+[node name="Label" type="Label" parent="container/VGroup/MarginContainer3/VBoxContainer"]
 margin_right = 208.0
 margin_bottom = 14.0
 text = "Weight change"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="container/VBoxContainer/MarginContainer3/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="container/VGroup/MarginContainer3/VBoxContainer"]
 margin_top = 18.0
 margin_right = 208.0
 margin_bottom = 42.0
 
-[node name="LineEdit" type="LineEdit" parent="container/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="container/VGroup/MarginContainer3/VBoxContainer/HBoxContainer"]
 margin_right = 58.0
 margin_bottom = 24.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="LineEdit2" type="LineEdit" parent="container/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
+[node name="LineEdit2" type="LineEdit" parent="container/VGroup/MarginContainer3/VBoxContainer/HBoxContainer"]
 margin_left = 62.0
 margin_right = 120.0
 margin_bottom = 24.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="LineEdit3" type="LineEdit" parent="container/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
+[node name="LineEdit3" type="LineEdit" parent="container/VGroup/MarginContainer3/VBoxContainer/HBoxContainer"]
 margin_left = 124.0
 margin_right = 182.0
 margin_bottom = 24.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="container/VBoxContainer/MarginContainer3/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="container/VGroup/MarginContainer3/VBoxContainer"]
 margin_top = 46.0
 margin_right = 208.0
 margin_bottom = 70.0
 
-[node name="LineEdit4" type="LineEdit" parent="container/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2"]
+[node name="LineEdit4" type="LineEdit" parent="container/VGroup/MarginContainer3/VBoxContainer/HBoxContainer2"]
 margin_right = 58.0
 margin_bottom = 24.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="LineEdit5" type="LineEdit" parent="container/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2"]
+[node name="LineEdit5" type="LineEdit" parent="container/VGroup/MarginContainer3/VBoxContainer/HBoxContainer2"]
 margin_left = 62.0
 margin_right = 120.0
 margin_bottom = 24.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="LineEdit6" type="LineEdit" parent="container/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2"]
+[node name="LineEdit6" type="LineEdit" parent="container/VGroup/MarginContainer3/VBoxContainer/HBoxContainer2"]
 margin_left = 124.0
 margin_right = 182.0
 margin_bottom = 24.0
 caret_blink = true
 caret_blink_speed = 0.5
 [connection signal="pressed" from="VisibilityButton" to="container" method="_on_VisibilityButton_pressed"]
+[connection signal="item_selected" from="container/VGroup/TopologyBlock/VGroup/OptionTopology" to="container" method="_on_OptionTopology_item_selected"]
